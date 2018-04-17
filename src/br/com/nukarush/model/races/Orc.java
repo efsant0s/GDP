@@ -10,14 +10,27 @@ package br.com.nukarush.model.races;
  * @author efsantos
  */
 public class Orc extends DefaultRace {
-
-    public Orc(Integer hp, Integer mp, Integer st, Integer forca, Integer desarmado, Integer resistenciaFi, 
-            Integer resistenciaMa, Integer espadasUmaMao, Integer espadasDuasMaos, Integer defesaFisica, 
-            Integer defesaMagica, Integer carisma, Integer inteligencia, Integer agilidade) {
-        
-        super(hp, mp, st, forca, desarmado, resistenciaFi, 
-                resistenciaMa, espadasUmaMao, espadasDuasMaos, defesaFisica, defesaMagica, carisma, inteligencia, agilidade);
+    private boolean NPC;
+  
+    
+    public boolean isNPC() {
+        return NPC;
     }
+
+    public void setNPC(boolean NPC) {
+        this.NPC = NPC;
+    }
+    
+    
+    public Orc(int levelPersonagemPrincipal) {
+        this.NPC =  true;
+        
+    }
+
+    public Orc(String nome, Integer desarmado, Integer resistenciaFi, Integer resistenciaMa, Integer espadasUmaMao, Integer espadasDuasMaos, Integer defesaFisica, Integer defesaMagica) {
+        super(nome, desarmado, resistenciaFi, resistenciaMa, espadasUmaMao, espadasDuasMaos, defesaFisica, defesaMagica);
+    }
+
 
     public Orc(Integer hp, Integer mp, Integer st, Integer forca, Integer carisma, Integer inteligencia, Integer agilidade) {
         super(hp, mp, st, forca, carisma, inteligencia, agilidade);
