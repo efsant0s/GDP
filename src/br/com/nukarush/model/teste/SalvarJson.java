@@ -5,12 +5,17 @@
  */
 package br.com.nukarush.model.teste;
 
+import br.com.nukarush.model.SaveFile;
 import br.com.nukarush.model.Tipo_entidade;
-import com.google.gson.Gson;
 import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,15 +24,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class SalvarJson {
 
     public static void main(String[] args) {
-
-        String json = JHelper.toJson(createEntidade());
-        System.out.println(json);
-        Tipo_entidade t =  (Tipo_entidade) JHelper.fromJson(json, Tipo_entidade.class);
-        System.out.println(t);
     }
 
+ 
 
-
+  
     private static Tipo_entidade createEntidade() {
         Tipo_entidade human = new Tipo_entidade();
         human.setNm_entidade("Humano");
@@ -38,7 +39,5 @@ public class SalvarJson {
 
         return human;
     }
-
-  
 
 }
