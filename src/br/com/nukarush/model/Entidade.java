@@ -9,14 +9,26 @@ package br.com.nukarush.model;
  *
  * @author Eduardo
  */
-public class Tipo_entidade {
+public class Entidade implements DefaultClass {
+
+    private Integer nr_sequencia;
     private String nm_entidade;
     private int nr_hp_base;
     private int nr_mp_base;
     private int nr_hp_per_lvl;
-    private int nr_mp_per_lvl; 
+    private int nr_mp_per_lvl;
     private String ds_lore;
-    
+
+    public Entidade(Integer nr_sequencia, String nm_entidade, int nr_hp_base, int nr_mp_base, int nr_hp_per_lvl, int nr_mp_per_lvl, String ds_lore) {
+        this.nr_sequencia = nr_sequencia;
+        this.nm_entidade = nm_entidade;
+        this.nr_hp_base = nr_hp_base;
+        this.nr_mp_base = nr_mp_base;
+        this.nr_hp_per_lvl = nr_hp_per_lvl;
+        this.nr_mp_per_lvl = nr_mp_per_lvl;
+        this.ds_lore = ds_lore;
+    }
+
     public String getNm_entidade() {
         return nm_entidade;
     }
@@ -66,8 +78,13 @@ public class Tipo_entidade {
     }
 
     @Override
-    public String toString() {
-        return "Tipo_entidade{" + "nm_entidade=" + nm_entidade + ", nr_hp_base=" + nr_hp_base + ", nr_mp_base=" + nr_mp_base + ", nr_hp_per_lvl=" + nr_hp_per_lvl + ", nr_mp_per_lvl=" + nr_mp_per_lvl + ", ds_lore=" + ds_lore + '}';
+    public Integer getNrSequencia() {
+        return nr_sequencia;
     }
-    
+
+    @Override
+    public void setNrSequencia(Integer nr_sequencia) {
+        this.nr_sequencia = nr_sequencia;
+    }
+
 }

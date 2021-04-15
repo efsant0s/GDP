@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.nukarush.model.teste;
+package br.com.nukarush.utils;
 
+import br.com.nukarush.model.DefaultClass;
+import br.com.nukarush.model.teste.*;
 import br.com.nukarush.model.SaveFile;
-import br.com.nukarush.model.Tipo_entidade;
+import br.com.nukarush.model.Entidade;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -30,13 +33,13 @@ public class JHelper {
     }
 
     public static Object fromJson(String json, Class aClass) {
-        return tool.fromJson(json, Tipo_entidade.class);
+        return tool.fromJson(json, aClass);
     }
 
     public static Object saveToJson(SaveFile save) {
         return tool.fromJson(save.getJson(), save.getClasse());
     }
-
+    
     public static void salvarArquivos(String arq, List<SaveFile> save) {
 
         try {
@@ -69,7 +72,15 @@ public class JHelper {
         }
         return true;
     }
-
+    public static LinkedHashMap<Integer, DefaultClass> trazMap(String arq, Class aClass){
+        List<SaveFile> lista = lerArquivos(arq);
+        LinkedHashMap<Integer, DefaultClass> retorno = new LinkedHashMap<>();
+        for (SaveFile saveFile : lista) {
+            DefaultClass arquivo = (DefaultClass) fromJson(saveFile.getJson(), aClass);
+            retorno.put(arquivo.getNrSequencia(), arquivo);
+        }
+        return retorno;
+    }
     public static List<SaveFile> lerArquivos(String arq) {
         try {
             criarPastaSeNaoExistir();
